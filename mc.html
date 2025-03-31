@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Molar Mass Calculator</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fadeInUp {
+            animation: fadeInUp 0.8s ease-out;
+        }
+    </style>
+    <script>
+        function calculateMolarMass() {
+            const elementMasses = {
+                H: 1.008, He: 4.0026, Li: 6.94, Be: 9.0122, B: 10.81, C: 12.011, N: 14.007, O: 16.00, F: 18.998,
+                Na: 22.990, Mg: 24.305, Al: 26.982, Si: 28.085, P: 30.974, S: 32.06, Cl: 35.45, K: 39.098, Ca: 40.078
+            };
+            let formula = document.getElementById("formula").value;
+            let totalMass = 0;
+            let matches = formula.match(/([A-Z][a-z]?)(\d*)/g);
+            if (!matches) {
+                document.getElementById("result").textContent = "Invalid formula";
+                return;
+            }
+            matches.forEach(match => {
+                let [, element, count] = match.match(/([A-Z][a-z]?)(\d*)/);
+                count = count ? parseInt(count) : 1;
+                if (elementMasses[element]) {
+                    totalMass += elementMasses[element] * count;
+                } else {
+                    document.getElementById("result").textContent = "Unknown element: " + element;
+                    return;
+                }
+            });
+            document.getElementById("result").textContent = "Molar Mass: " + totalMass.toFixed(2) + " g/mol";
+        }
+    </script>
+</head>
+<body class="flex items-center justify-center min-h-screen bg-gray-100">
+    <div class="bg-white p-6 rounded-2xl shadow-lg text-center transition-transform transform hover:scale-105 animate-fadeInUp w-full max-w-md">
+        <h2 class="text-2xl font-bold text-blue-600">Molar Mass Calculator</h2>
+        <p class="text-gray-600 mt-2">Enter a chemical formula to calculate molar mass.</p>
+        <input type="text" id="formula" class="border p-2 w-full mt-4" placeholder="H2O, CO2, etc."/>
+        <button onclick="calculateMolarMass()" class="mt-4 px-6 py-2 bg-blue-600 text-white rounded-lg">Calculate</button>
+        <p id="result" class="text-gray-600 mt-4"></p>
+    </div>
+</body>
+</html>

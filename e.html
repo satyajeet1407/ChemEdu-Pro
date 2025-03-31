@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chemistry Hub</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/framer-motion/10.12.5/framer-motion.umd.min.js"></script>
+    <style>
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fadeInUp {
+            animation: fadeInUp 0.8s ease-out;
+        }
+    </style>
+</head>
+<body class="flex items-center justify-center min-h-screen bg-gray-100">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 p-6 w-full max-w-4xl">
+        <div class="bg-white p-6 rounded-2xl shadow-lg text-center transition-transform transform hover:scale-105 animate-fadeInUp">
+            <h2 class="text-xl font-bold text-blue-600">Periodic Table</h2>
+            <p class="text-gray-600 mt-2">Explore elements and their properties.</p>
+        </div>
+        <div class="bg-white p-6 rounded-2xl shadow-lg text-center transition-transform transform hover:scale-105 animate-fadeInUp">
+            <h2 class="text-xl font-bold text-blue-600">Chemical Calculator</h2>
+            <p class="text-gray-600 mt-2">Perform chemistry calculations easily.</p>
+        </div>
+        <div class="bg-white p-6 rounded-2xl shadow-lg text-center transition-transform transform hover:scale-105 animate-fadeInUp">
+            <h2 class="text-xl font-bold text-blue-600">Lab Safety Guide</h2>
+            <p class="text-gray-600 mt-2">Ensure safety while conducting experiments.</p>
+        </div>
+        <div class="bg-white p-6 rounded-2xl shadow-lg text-center transition-transform transform hover:scale-105 animate-fadeInUp">
+            <h2 class="text-xl font-bold text-blue-600">Chemistry Glossary</h2>
+            <p class="text-gray-600 mt-2">Understand key chemistry terms.</p>
+        </div>
+        <div class="bg-white p-6 rounded-2xl shadow-lg text-center transition-transform transform hover:scale-105 animate-fadeInUp">
+            <h2 class="text-xl font-bold text-blue-600">Career Paths</h2>
+            <p class="text-gray-600 mt-2">Explore opportunities in chemistry.</p>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dilution Calculator</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fadeInUp {
+            animation: fadeInUp 0.8s ease-out;
+        }
+    </style>
+    <script>
+        function calculateDilution() {
+            let c1 = parseFloat(document.getElementById("c1").value);
+            let v1 = parseFloat(document.getElementById("v1").value);
+            let v2 = parseFloat(document.getElementById("v2").value);
+            
+            if (isNaN(c1) || isNaN(v1) || isNaN(v2) || v2 === 0) {
+                document.getElementById("result").textContent = "Please enter valid values";
+                return;
+            }
+            
+            let c2 = (c1 * v1) / v2;
+            document.getElementById("result").textContent = "Final Concentration: " + c2.toFixed(2) + " M";
+        }
+    </script>
+</head>
+<body class="flex items-center justify-center min-h-screen bg-gray-100">
+    <div class="bg-white p-6 rounded-2xl shadow-lg text-center transition-transform transform hover:scale-105 animate-fadeInUp w-full max-w-md">
+        <h2 class="text-2xl font-bold text-blue-600">Dilution Calculator</h2>
+        <p class="text-gray-600 mt-2">Calculate the final concentration of a diluted solution.</p>
+        <input type="number" id="c1" class="border p-2 w-full mt-4" placeholder="Initial Concentration (M)"/>
+        <input type="number" id="v1" class="border p-2 w-full mt-4" placeholder="Initial Volume (mL)"/>
+        <input type="number" id="v2" class="border p-2 w-full mt-4" placeholder="Final Volume (mL)"/>
+        <button onclick="calculateDilution()" class="mt-4 px-6 py-2 bg-blue-600 text-white rounded-lg">Calculate</button>
+        <p id="result" class="text-gray-600 mt-4"></p>
+    </div>
+</body>
+</html>
